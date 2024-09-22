@@ -1,0 +1,6 @@
+LIBRARY
+EXPORTS
+	GiveFnptrsToDll				@1
+	Meta_Query					@2
+	Meta_Attach					@3
+	Meta_Detach					@4
