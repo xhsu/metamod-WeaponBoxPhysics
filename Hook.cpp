@@ -96,3 +96,27 @@ qboolean fw_AddToFullPack_Post(entity_state_t* pState, int iEntIndex, edict_t* p
 
 	return false;
 }
+
+void fw_Touch_Post(edict_t* pentTouched, edict_t* pentOther) noexcept
+{
+	// Purpose: resolve the 'stuck in the air' situation.
+
+	if (pentTouched->v.classname != pentOther->v.classname)
+		return;
+
+	if (strcmp(STRING(pentTouched->v.classname), "weaponbox"))
+		return;
+
+	if ((pentTouched->v.flags & FL_ONGROUND) && (pentOther->v.flags & FL_ONGROUND))
+		return;
+
+	Vector vecVel{
+		g_engfuncs.pfnRandomFloat(-1.f, 1.f),
+		g_engfuncs.pfnRandomFloat(-1.f, 1.f),
+		g_engfuncs.pfnRandomFloat(-0.5f, 1.f),
+	};
+	vecVel = vecVel.Normalize() * g_engfuncs.pfnRandomFloat(50.f, 60.f);
+
+	pentTouched->v.velocity = vecVel;
+	pentOther->v.velocity = -vecVel;
+}

@@ -225,7 +225,7 @@
     <ClCompile Include="..\metamod-p\metamod\plinfo.ixx">
       <Filter>MetaMod</Filter>
     </ClCompile>
-    <ClCompile Include="plugin.cpp">
+    <ClCompile Include="Plugin.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Hook.cpp">

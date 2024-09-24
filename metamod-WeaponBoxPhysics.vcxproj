@@ -152,7 +152,7 @@
     <ClCompile Include="..\metamod-p\metamod\mutil.ixx" />
     <ClCompile Include="..\metamod-p\metamod\plinfo.ixx" />
     <ClCompile Include="Hook.cpp" />
-    <ClCompile Include="plugin.cpp" />
+    <ClCompile Include="Plugin.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="export.def" />

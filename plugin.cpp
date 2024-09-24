@@ -9,6 +9,7 @@ extern META_RES fw_PM_Move(playermove_s* ppmove, qboolean server) noexcept;
 extern void fw_PM_Move_Post(playermove_s* ppmove, qboolean server) noexcept;
 extern META_RES fw_PlayerPostThink(edict_t*) noexcept;
 extern qboolean fw_AddToFullPack_Post(entity_state_t* pState, int iEntIndex, edict_t* pEdict, edict_t* pClientSendTo, qboolean cl_lw, qboolean bIsPlayer, unsigned char* pSet) noexcept;
+extern void fw_Touch_Post(edict_t* pentTouched, edict_t* pentOther) noexcept;
 //
 
 // Description of plugin
@@ -127,7 +128,7 @@ static int HookGameDLLExportedFn_Post(DLL_FUNCTIONS *pFunctionTable, int *interf
 		.pfnSpawn		= nullptr,
 		.pfnThink		= nullptr,
 		.pfnUse			= nullptr,
-		.pfnTouch		= nullptr,
+		.pfnTouch		= &fw_Touch_Post,
 		.pfnBlocked		= nullptr,
 		.pfnKeyValue	= nullptr,
 		.pfnSave		= nullptr,
